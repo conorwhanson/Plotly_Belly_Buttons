@@ -1,0 +1,9 @@
+.jumbotron {
+    background-image: url("../images/buttons.jpg");
+    background-size: cover;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 75px;
+    color: rgb(255, 255, 255)
+  }
+
