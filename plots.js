@@ -20,6 +20,7 @@ function optionChanged(id) {
   buildCharts(id);
 }
 
+// Build the demographics panel
 function buildMetadata(sample) {
   d3.json("static/samples.json").then((data) => {
     var metadata = data.metadata;
