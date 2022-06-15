@@ -87,7 +87,8 @@ function buildCharts(sample) {
         hovertext: otu_labels.slice(0,10).reverse(),
         orientation: "h",
         name: "Top Bacteria",
-        type: "bar"
+        type: "bar",
+        marker: {color: "rgb(106,90,205)"} 
       };
       var bardata = [trace1];
       // 9. Create the layout for the bar chart. 
