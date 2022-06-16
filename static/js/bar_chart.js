@@ -64,16 +64,19 @@ function buildCharts(sample) {
       // console.log(sample_filter);
     // 4. Create a variable that filters the samples for the object with the desired sample number.
       var sample_data = sample_filter.filter(x => x.id == sample);
+      var wash_data = data.metadata.filter(x => x.id == sample);
       // console.log(sample_data);
 
       //  5. Create a variable that holds the first sample in the array.
       var sample_data1 = sample_data[0];
+      var wash_freq = wash_data[0];
   
       // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
       var otu_ids = sample_data1.otu_ids;
       var otu_labels = sample_data1.otu_labels;
       var sample_values = sample_data1.sample_values;
-  
+      var wash_value = wash_freq.wfreq;
+      console.log(wash_freq);
       // 7. Create the yticks for the bar chart.
       // Hint: Get the the top 10 otu_ids and map them in descending order  
       //  so the otu_ids with the most bacteria are last. 
@@ -119,4 +122,31 @@ function buildCharts(sample) {
 
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
+
+    // 4. Use Plotly to create guage display for wash frequency
+    var guageData = [{
+      value: wash_value,
+      title: { text: "Belly Button Washing Frequency<br> (Scrubs per Week)" },
+      type: "indicator",
+      mode: "gauge+number",
+      gauge: {
+        axis: { range: [null, 10],
+              tickvals: [0,2,4,6,8,10] },
+        bar: { color: "black" },
+        steps: [
+          { range: [0, 2], color: "red" },
+          { range: [2, 4], color: "orange" },
+          { range: [4, 6], color: "yellow" },
+          { range: [6, 8], color: "greenyellow" },
+          { range: [8, 10], color: "green" }
+        ]
+      }}];
+
+      var gaugeLayout = { width: 400, 
+        height: 450, 
+        paper_bgcolor: "lightgrey",
+        margin: {t: 0, b: 0}
+      };
+
+      Plotly.newPlot("gauge", guageData, gaugeLayout);
 })};

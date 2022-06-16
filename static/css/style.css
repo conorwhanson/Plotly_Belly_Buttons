@@ -6,3 +6,10 @@
     padding-bottom: 75px;
     color: rgb(255, 255, 255)
   }
+
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 5;
+    border-top: 10px solid rgb(0, 0, 0);
+  }
